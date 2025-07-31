@@ -9,6 +9,57 @@ main {
   padding: 20px 0;
 }
 
+.main-container {
+  display: flex;
+  gap: 20px;
+}
+
+.sidebar {
+  width: 250px;
+  flex-shrink: 0;
+}
+
+.department-list {
+  background: white;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.department-grid {
+  display: grid;
+  gap: 15px;
+}
+
+.department-item {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  padding: 15px;
+  border-radius: 6px;
+  transition: background-color 0.2s;
+}
+
+.department-item:hover {
+  background-color: #f5f5f5;
+}
+
+.department-content {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.department-header {
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #eee;
+}
+
+.department-page {
+  padding: 20px;
+}
+
 .header {
   background-color: #1976d2;
   color: white;
