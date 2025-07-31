@@ -13,6 +13,11 @@ const ProductCard = ({ product }) => {
     return `$${parseFloat(price).toFixed(2)}`;
   };
 
+  const getDepartmentDisplay = () => {
+    // Prefer the new department_name, fall back to old department field
+    return product.department_name || product.department || 'Department not available';
+  };
+
   return (
     <div className="product-card" onClick={handleClick}>
       <div className="product-image">
@@ -24,6 +29,7 @@ const ProductCard = ({ product }) => {
         {product.brand && (
           <p className="product-brand">Brand: {product.brand}</p>
         )}
+        <p className="product-department">Department: {getDepartmentDisplay()}</p>
         <p className="product-price">{formatPrice(product.retail_price)}</p>
       </div>
     </div>

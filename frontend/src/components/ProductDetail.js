@@ -35,6 +35,11 @@ const ProductDetail = () => {
     return `$${parseFloat(cost).toFixed(2)}`;
   };
 
+  const getDepartmentDisplay = () => {
+    // Prefer the new department_name, fall back to old department field
+    return product.department_name || product.department || 'Department not available';
+  };
+
   if (loading) {
     return <div className="loading">Loading product details...</div>;
   }
@@ -82,15 +87,18 @@ const ProductDetail = () => {
           {product.brand && (
             <p className="product-detail-brand">Brand: {product.brand}</p>
           )}
+          <p className="product-detail-department">
+            Department: {getDepartmentDisplay()}
+          </p>
           <p className="product-detail-price">
             Price: {formatPrice(product.retail_price)}
           </p>
           {product.sku && (
             <p className="product-detail-sku">SKU: {product.sku}</p>
           )}
-          {product.department && (
+          {product.department && product.department !== getDepartmentDisplay() && (
             <p className="product-detail-department">
-              Department: {product.department}
+              Original Department: {product.department}
             </p>
           )}
           {product.cost && (
@@ -101,6 +109,11 @@ const ProductDetail = () => {
           {product.distribution_center_id && (
             <p className="product-detail-cost">
               Distribution Center ID: {product.distribution_center_id}
+            </p>
+          )}
+          {product.department_id && (
+            <p className="product-detail-cost">
+              Department ID: {product.department_id}
             </p>
           )}
         </div>
