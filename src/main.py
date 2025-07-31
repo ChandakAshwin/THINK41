@@ -5,6 +5,7 @@ import uvicorn
 
 from models import ProductResponse, ProductListResponse, DepartmentResponse, DepartmentListResponse, ErrorResponse
 from database import DatabaseManager
+from departments import router as departments_router
 
 # Initialize FastAPI app
 app = FastAPI(
@@ -12,6 +13,9 @@ app = FastAPI(
     description="API for accessing e-commerce product data with department information",
     version="1.0.0"
 )
+
+# Include routers
+app.include_router(departments_router, prefix="/api", tags=["departments"])
 
 # Add CORS middleware for frontend integration
 app.add_middleware(
